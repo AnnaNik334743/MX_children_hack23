@@ -70,8 +70,8 @@ async def csvpost(input_file: UploadFile = File(...)):
     for column_name, values_vector in predict_result.items():
         df[column_name] = values_vector
 
-    df = df[['id', 'address','target_building_id']]
-    
+    df = df[['id', 'target_building_id']]
+
     # logic for processing df
     return bytes(df.to_csv(index=False), encoding='utf-8')
 
