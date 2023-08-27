@@ -19,8 +19,10 @@ docker-compose build
 docker-compose up -d
 ```
 * Чтобы поднять только fastapi, необходимо перейти в папку ./api и выполнить команды:
+```
 docker build . -t addresses_api
 docker run -d -p 8000:8000 -v $(pwd):/app addresses_api
+```
 
 Для работы с API используются ручки ‘/post-string/’ и ‘/post-csv/’.
 Ручка ‘/post-csv-streamlit/’ повторяет функционал ‘/post-csv/’, но результат отдается в другом формате, для удобства обработки.
