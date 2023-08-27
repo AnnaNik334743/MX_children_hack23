@@ -25,6 +25,7 @@ docker run -d -p 8000:8000 -v $(pwd):/app addresses_api
 ```
 
 Для работы с API используются ручки ‘/post-string/’ и ‘/post-csv/’.
+
 Ручка ‘/post-csv-streamlit/’ повторяет функционал ‘/post-csv/’, но результат отдается в другом формате, для удобства обработки.
 
 
@@ -34,10 +35,17 @@ docker run -d -p 8000:8000 -v $(pwd):/app addresses_api
 
 ## Используемые данные
 Из папка actual_data использовались данные:
+
 "area_20230808.csv",
+
 "areatype_20230808.csv",
+
 "geonim_20230808.csv",
+
 "geonimtype_20230808.csv",
+
 "prefix_20230808.csv",
+
 "subrf_20230808.csv",
+
 "town_20230808.csv"
