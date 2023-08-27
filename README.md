@@ -14,8 +14,10 @@ Streamlit: http://31.129.102.208:8501
 
 2. Можно развернуть сервис локально:
 * Чтобы поднять и fastapi, и streamlit необходимо в корневой директории выполнить команды:
+```
 docker-compose build
 docker-compose up -d
+```
 * Чтобы поднять только fastapi, необходимо перейти в папку ./api и выполнить команды:
 docker build . -t addresses_api
 docker run -d -p 8000:8000 -v $(pwd):/app addresses_api
