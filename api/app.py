@@ -23,20 +23,13 @@ async def stringpost(input_string: str = Body(..., embed=True),
     result_dict = {}
     for i in range(1, 1 + input_topn):
         result_dict[f'result_{i}'] = result_json_list[i - 1]
-    print(result_dict)
     return json.dumps(str(result_dict), ensure_ascii=False)
 
 
 @app.post("/post-csv/")
 async def csvpost(input_file: UploadFile = File(...)):
     input_bytes = await input_file.read()
-    print(input_bytes)
-    print()
-    print(io.BytesIO(input_bytes))
-    print()
     df = pd.read_csv(io.BytesIO(input_bytes), sep=';')
-
-    print(df.shape)
 
     predict_result = {'predicted_address': [],
                       'building_target_id': [],

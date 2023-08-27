@@ -11,6 +11,7 @@ import os
 from typing import List, Dict, Set, Tuple, Union
 from faiss import Index
 from transliterate import translit
+from scipy.special import softmax 
 
 
 # предполагается, что все данные, включая building.csv, лежат в указанной папке,
@@ -338,9 +339,10 @@ def get_topn_index_for_query(query_vector: np.ndarray, index: Index, topn: int =
     """
     distances, indexes = index.search(query_vector, topn)
     distances = distances[0]
-    if topn != 1:
-        distances = np.round((distances - distances.min()) / (distances.max() - distances.min()), 2)
-    similarity = 1 - distances
+    similarity = softmax(distances)
+    # if topn != 1:
+    #     distances = np.round((distances - distances.min()) / (distances.max() - distances.min()), 2)
+    # similarity = 1 - distances
     return similarity, indexes
 
 
@@ -426,7 +428,7 @@ def predict_top_query_string(query, topn):
     for address, address_id, sim in zip(top_faiss_addresses_clear, top_faiss_addresses_ids, top_faiss_similarities):
         result_json_list.append({'id': address_id,
                                  'address': address,
-                                 'similarity': sim})
+                                 'relative_dist': sim})
 
     return result_json_list
 

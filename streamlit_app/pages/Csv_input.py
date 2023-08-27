@@ -4,16 +4,17 @@ import pandas as pd
 import requests
 from io import StringIO
 import json
+from config import api_endpoint as endpoint
 
 # Streamlit app title and description
-st.title("CSV")
+st.title("Ввод адресов")
 st.write("Загрузите файл .csv в формате: ...")
 
 # Upload CSV file
 uploaded_file = st.file_uploader("Загрузить csv файл.", type=["csv"])
 
 # API endpoint
-api_endpoint = 'http://192.168.83.231:8000/post-csv-streamlit/'
+api_endpoint = endpoint + '/post-csv-streamlit/'
 
 
 # Function to generate a download link for a DataFrame as a CSV file

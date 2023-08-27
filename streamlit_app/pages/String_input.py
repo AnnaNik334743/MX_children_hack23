@@ -1,15 +1,15 @@
 import json
-
+from config import api_endpoint as endpoint
 import streamlit as st
 import requests
 
 
 # API endpoint
-api_endpoint = 'http://192.168.83.231:8000/post-string/'
+api_endpoint = endpoint + '/post-string/'
 
 
 # Streamlit app title and description
-st.title("Ввод стринги")
+st.title("Ввод адреса")
 
 def make_post_request(input_string, input_topn):
     response = requests.post(api_endpoint, json={'input_string': input_string,
