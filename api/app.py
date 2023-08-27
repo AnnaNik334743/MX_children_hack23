@@ -32,18 +32,19 @@ async def csvpost(input_file: UploadFile = File(...)):
     df = pd.read_csv(io.BytesIO(input_bytes), sep=';')
 
     predict_result = {'predicted_address': [],
-                      'building_target_id': [],
-                      'predicted_similarity': []}
+                      'target_building_id': [],
+                      'relative_dist': []}
 
     for address in tqdm(df['address']):
         pred_address, pred_id, pred_sim = predict_top_query_csv(address)
         predict_result['predicted_address'].append(pred_address)
-        predict_result['building_target_id'].append(pred_id)
-        predict_result['predicted_similarity'].append(pred_sim)
+        predict_result['target_building_id'].append(pred_id)
+        predict_result['relative_dist'].append(pred_sim)
 
     for column_name, values_vector in predict_result.items():
         df[column_name] = values_vector
 
+    df = df[['id', 'address','target_building_id']]
     # logic for processing df
     # return bytes(df.to_csv(), encoding='utf-8')
     df.to_csv('updated_file.csv', index=False)
@@ -57,18 +58,20 @@ async def csvpost(input_file: UploadFile = File(...)):
     df = pd.read_csv(io.BytesIO(input_bytes), sep=',')
 
     predict_result = {'predicted_address': [],
-                      'building_target_id': [],
-                      'predicted_similarity': []}
+                      'target_building_id': [],
+                      'relative_dist': []}
 
     for address in tqdm(df['address']):
         pred_address, pred_id, pred_sim = predict_top_query_csv(address)
         predict_result['predicted_address'].append(pred_address)
-        predict_result['building_target_id'].append(pred_id)
-        predict_result['predicted_similarity'].append(pred_sim)
+        predict_result['target_building_id'].append(pred_id)
+        predict_result['relative_dist'].append(pred_sim)
 
     for column_name, values_vector in predict_result.items():
         df[column_name] = values_vector
 
+    df = df[['id', 'address','target_building_id']]
+    
     # logic for processing df
     return bytes(df.to_csv(index=False), encoding='utf-8')
 

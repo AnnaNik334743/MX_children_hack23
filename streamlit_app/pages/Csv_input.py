@@ -8,7 +8,7 @@ from config import api_endpoint as endpoint
 
 # Streamlit app title and description
 st.title("Ввод адресов")
-st.write("Загрузите файл .csv в формате: ...")
+st.write("Загрузите файл .csv в формате, описанном в ридми репозитория")
 
 # Upload CSV file
 uploaded_file = st.file_uploader("Загрузить csv файл.", type=["csv"])
