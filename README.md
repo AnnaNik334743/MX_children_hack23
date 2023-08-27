@@ -9,6 +9,7 @@
 
 1. Сервис развернут на адресе:
 Fastapi: http://31.129.102.208:8000
+
 Streamlit: http://31.129.102.208:8501
 
 
@@ -36,16 +37,16 @@ docker run -d -p 8000:8000 -v $(pwd):/app addresses_api
 ## Используемые данные
 Из папка actual_data использовались данные:
 
-*"area_20230808.csv"
+* "area_20230808.csv"
 
-*"areatype_20230808.csv"
+* "areatype_20230808.csv"
 
-*"geonim_20230808.csv"
+* "geonim_20230808.csv"
 
-*"geonimtype_20230808.csv"
+* "geonimtype_20230808.csv"
 
-*"prefix_20230808.csv"
+* "prefix_20230808.csv"
 
-*"subrf_20230808.csv"
+* "subrf_20230808.csv"
 
-*"town_20230808.csv"
+* "town_20230808.csv"
